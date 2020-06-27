@@ -22778,10 +22778,11 @@
         function get_after_plugin_activation_redirect_url() {
             $url = false;
 
+            $first_time_path = $this->_menu->get_first_time_path(
+                fs_is_network_admin() && $this->_is_network_active
+            );
+
             if ( ! $this->is_addon() || ! $this->has_free_plan() ) {
-                $first_time_path = $this->_menu->get_first_time_path(
-                    fs_is_network_admin() && $this->_is_network_active
-                );
 
                 if ( $this->is_activation_mode() ) {
                     $url = $this->get_activation_url();
@@ -22810,6 +22811,8 @@
                     if ( ! $plugin_fs->is_registered() ) {
                         // Forward to parent plugin connect when parent not registered.
                         $url = $plugin_fs->get_activation_url();
+                    } else if ( ! empty( $first_time_path ) ) {
+                        $url = $first_time_path;
                     } else {
                         // Forward to account page.
                         $url = $plugin_fs->_get_admin_page_url( 'account' );
