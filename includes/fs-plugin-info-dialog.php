@@ -150,13 +150,12 @@
                             foreach ( $pricing as $prices ) {
                                 $prices = new FS_Pricing( $prices );
 
-                                if ( ! $prices->is_usd() ) {
-                                    /**
-                                     * Skip non-USD pricing.
-                                     *
-                                     * @author Leo Fajardo (@leorw)
-                                     * @since 2.3.1
-                                     */
+                                /**
+                                 * Force GBP prices
+                                 *
+                                 * @author @invisnet
+                                 */
+                                if ('gbp' != $prices->currency) {
                                     continue;
                                 }
 
@@ -1182,7 +1181,7 @@
                                                     }
 
                                                     if (!multipleLicenses && 1 == pricing.licenses) {
-                                                        return '$' + pricing.price + priceCycle;
+                                                        return '&pound;' + pricing.price + priceCycle;
                                                     }
 
                                                     return _formatLicensesTitle(pricing) + ' - <var class="fs-price">$' + pricing.price + priceCycle + '</var>';
