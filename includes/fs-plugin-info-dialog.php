@@ -414,7 +414,7 @@
                 $price_tag = $pricing->lifetime_price;
             }
 
-            return '$' . $price_tag;
+            return '&pound;' . $price_tag;
         }
 
         /**
