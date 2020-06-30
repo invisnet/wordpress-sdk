@@ -1469,7 +1469,7 @@
                         <?php } ?>
                     <?php } ?>
             </div>
-            <div id="section-holder" class="wrap">
+            <div id="section-holder">
             <?php
             if ( ! empty( $api->tested ) && version_compare( substr( $GLOBALS['wp_version'], 0, strlen( $api->tested ) ), $api->tested, '>' ) ) {
                 echo '<div class="notice notice-warning"><p>' . '<strong>' . fs_text_inline( 'Warning', 'warning', $api->slug ) . ':</strong> ' . fs_text_inline( 'This plugin has not been tested with your current version of WordPress.', 'not-tested-warning', $api->slug ) . '</p></div>';
