@@ -22808,7 +22808,7 @@
                 }
 
                 if ( is_object( $plugin_fs ) ) {
-                    if ( ! $plugin_fs->is_registered() ) {
+                    if ( ! $plugin_fs->is_anonymous() && ! $plugin_fs->is_registered() ) {
                         // Forward to parent plugin connect when parent not registered.
                         $url = $plugin_fs->get_activation_url();
                     } else if ( ! empty( $first_time_path ) ) {
@@ -22818,6 +22818,7 @@
                         $url = $plugin_fs->_get_admin_page_url( 'account' );
                     }
                 } else if ( ! empty( $first_time_path ) ) {
+                    // not sure how we'd get here, but just in case...
                     $url = $first_time_path;
                 }
             }
