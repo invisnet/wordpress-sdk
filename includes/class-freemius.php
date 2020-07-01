@@ -22817,6 +22817,8 @@
                         // Forward to account page.
                         $url = $plugin_fs->_get_admin_page_url( 'account' );
                     }
+                } else if ( ! empty( $first_time_path ) ) {
+                    $url = $first_time_path;
                 }
             }
 
